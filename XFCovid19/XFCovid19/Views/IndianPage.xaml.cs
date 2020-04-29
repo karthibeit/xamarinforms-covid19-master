@@ -28,7 +28,7 @@ namespace XFCovid19.Views
         protected override async void OnAppearing()
         {
             indiaViewModel.ChangeLanguageApp();
-            eventTracker.SendEvent("ok");
+            eventTracker.SendEvent("indiaViewModel");
             await indiaViewModel.GetTotalsByIndiaCountry("IN");
            
 
