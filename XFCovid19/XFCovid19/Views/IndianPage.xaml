@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    x:Class="XFCovid19.Views.IndianPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:skeleton="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton"
+   
+    BackgroundColor="{DynamicResource MainPageBackgroundColor}"
+             mc:Ignorable="d"
+             >
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout>
+                    <Grid Grid.Row="0" ColumnSpacing="0">
+                        <pancake:PancakeView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Padding="0"
+                    Style="{DynamicResource FrameTotal}">
+                            <StackLayout
+                        Padding="8,15"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center">
+                                <Label Style="{DynamicResource fontGilroyMedium12}" Text="{Binding ConfirmedHeader}"/>
+                                <Label
+                            skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}"
+                            skeleton:Skeleton.BackgroundColor="{DynamicResource SkeletonLabelBackground}"
+                            
+                            skeleton:Skeleton.IsParent="False"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource lbTotalCasosConfirmados}"
+                            Text="{Binding CountryConfirmed}"/>
+                            </StackLayout>
+                        </pancake:PancakeView>
+                        <pancake:PancakeView
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Padding="0"
+                    Style="{DynamicResource FrameTotal}">
+                            <StackLayout
+                        Padding="8,15"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center">
+                                <Label Style="{DynamicResource fontGilroyMedium12}" Text="{Binding RecoveredHeader}"/>
+                                <Label
+                            skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}"
+                            skeleton:Skeleton.BackgroundColor="{DynamicResource SkeletonLabelBackground}"
+                            Text="{Binding CountryRecovered}"
+                            skeleton:Skeleton.IsParent="False"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource lbTotalCasosConfirmados}"
+                            />
+                            </StackLayout>
+                        </pancake:PancakeView>
+                        <pancake:PancakeView
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Padding="0"
+                    Style="{DynamicResource FrameTotal}">
+                            <StackLayout
+                        Padding="8,15"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center">
+                                <Label Style="{DynamicResource fontGilroyMedium12}" Text="{Binding DeathsHeader}"/>
+                                <Label
+                            skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}"
+                            skeleton:Skeleton.BackgroundColor="{DynamicResource SkeletonLabelBackground}"
+                            Text="{Binding CountryDeaths}"
+                            skeleton:Skeleton.IsParent="False"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource lbTotalCasosConfirmados}"
+                            />
+                            </StackLayout>
+                        </pancake:PancakeView>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="1">
+                    <ListView
+                  ItemsSource="{Binding StateWiseListView}"
+                  Grid.Row="2"
+                  HasUnevenRows="true"
+                  SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame BorderColor="Gray" Margin="10" 
+                                           CornerRadius="10" HasShadow="True"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds="1,1,-1,-1"
+                               >
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="20"></RowDefinition>
+                                                <RowDefinition Height="20"></RowDefinition>
+                                                <RowDefinition Height="20"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding State}" LineBreakMode="TailTruncation"></Label>
+                                            <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="3" Text="{Binding Statecode}"/>
+
+                                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding Deltaconfirmed}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
+                                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Deltarecovered}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
+                                            <Label Grid.Row="1" Grid.Column="2" Text="{Binding Deltadeaths}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
+
+
+                                            <Label Grid.Row="2" Grid.Column="0" Text="{Binding Confirmed}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
+                                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Recovered}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
+                                            <Label Grid.Row="2" Grid.Column="2" Text="{Binding Deaths}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
+                                            
+                                            
+                                        </Grid>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
