@@ -1,4 +1,6 @@
 ﻿using Rg.Plugins.Popup.Extensions;
+
+using Android.Util;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -10,6 +12,7 @@ using XFCovid19.Services;
 using XFCovid19.ThemeResources;
 using XFCovid19.ViewModel;
 using XFCovid19.Views;
+using System;
 
 namespace XFCovid19.ViewModels
 {
@@ -203,22 +206,28 @@ namespace XFCovid19.ViewModels
         {
             IsBusy = true;
             IsBusyCountry = isBusyCountry;
-
+            Log.Info("Kandroid", "Inside GetGlobalTotals isBusyCountry {0}", isBusyCountry);
             try
             {
                 if (!InternetConnectivity())
                 {
+                    Log.Info("Kandroid", "No iternet");
                     var response = _dbGlobal.FindAll().FirstOrDefault(p => p.globalKey.Equals("global"));
                     await Task.Delay(2000);
                     SetTotalGlobal(response, true);
                 }
                 else
                 {
+                    Log.Info("Kandroid", "Internet yes");
                     var response = await _service.GetGlobalTotals();
+                    Log.Info("Kandroid", "response in outside");
                     SetTotalGlobal(response);
+                    Log.Info("Kandroid", "SetTotalGlobal completed");
                 }
             }
-            catch { }
+            catch(Exception ex) {
+                Log.Info("Kandroid", "Error in GetGlobalTotals {0}", ex);
+            }
             finally
             {
                 IsBusy = false;
@@ -257,27 +266,38 @@ namespace XFCovid19.ViewModels
 
         private void SetTotalGlobal(GlobalTotals response, bool appOffLine = false)
         {
-            if (response != null)
+            Log.Info("Kandroid", "inside SetTotalGlobal");
+            try
             {
-                GlobalTotals = response;
-
-                if (!appOffLine)
+                if (response != null)
                 {
-                    response.globalKey = "global";
-                    _dbGlobal.UpsertItem(response);
-                }
 
-                LastUpdateHeader = $"{TranslateExtension.TranslateText("MainHeaderSubtitle")} {GlobalTotals.updated.TransformLongToDateTime().FormatDateTime(App.AppCultureInfo)}";
-                GlobalConfirmed = response.cases.TransformNumberToString();
-                GlobalRecovered = response.recovered.TransformNumberToString();
-                GlobalDeaths = response.deaths.TransformNumberToString();
+
+                    if (!appOffLine)
+                    {
+                        Log.Info("Kandroid", "global - appOffLine {0}", appOffLine);
+                        response.globalKey = "global";
+                        _dbGlobal.UpsertItem(response);
+                    }
+
+                    LastUpdateHeader = $"{TranslateExtension.TranslateText("MainHeaderSubtitle")} {response.updated.TransformLongToDateTime().FormatDateTime(App.AppCultureInfo)}";
+                    GlobalConfirmed = response.cases.TransformNumberToString();
+                    GlobalRecovered = response.recovered.TransformNumberToString();
+                    GlobalDeaths = response.deaths.TransformNumberToString();
+                }
+                else
+                {
+                    Log.Error("Kandroid", "Empty SetTotalGlobal");
+                    LastUpdateHeader = "------------------------------";
+                    GlobalConfirmed = "/";
+                    GlobalRecovered = "/";
+                    GlobalDeaths = "/";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                LastUpdateHeader = "------------------------------";
-                GlobalConfirmed = "-";
-                GlobalRecovered = "-";
-                GlobalDeaths = "-";
+
+                Log.Info("Kandroid", "Error in SetTotalGlobal {0}", ex);
             }
         }
 
@@ -326,6 +346,7 @@ namespace XFCovid19.ViewModels
 
         public async Task GetAll()
         {
+            Log.Info("Kandroid", "GetAll");
             InitData();
             await GetGlobalTotals(true);
             await GetTotalsByCountry(CountryISO2);

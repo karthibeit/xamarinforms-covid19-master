@@ -1,11 +1,13 @@
-﻿using Flurl;
+﻿using Android.Util;
+using Flurl;
 using Flurl.Http;
 using Microsoft.AppCenter.Crashes;
-using Newtonsoft.Json;
+
 using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using XFCovid19.Helpers;
 using XFCovid19.Interfaces;
@@ -17,19 +19,23 @@ namespace XFCovid19.Services
     {
         public async Task<GlobalTotals> GetGlobalTotals()
         {
-           // await Task.Delay(2000);
+            await Task.Delay(2000);
 
             try
             {
+                
+                
+                Log.Info("Kandroid", "inside GetGlobalTotals ");
                 var response = await Constants.BASE_URL
                     .AppendPathSegment("all")
-                    .WithTimeout(TimeSpan.FromSeconds(30))
+                    .WithTimeout(TimeSpan.FromSeconds(130))
                     .GetJsonAsync<GlobalTotals>();
-
+                Log.Info("Kandroid", "response {0}", response != null);
                 return response;
             }
             catch (FlurlHttpException ex)
             {
+                Log.Error("Kandroid", "Error GetGlobalTotals {0}", ex);
                 Crashes.TrackError(ex);
             
             var error = ex.Message;
@@ -37,6 +43,7 @@ namespace XFCovid19.Services
             }
             catch (Exception ex)
             {
+                Log.Error("Kandroid", "Error GetGlobalTotals {0}", ex);
                 Crashes.TrackError(ex);
                 var error = ex.Message;
                 return null;
@@ -55,16 +62,7 @@ namespace XFCovid19.Services
                     .AppendPathSegment($"countries/{countryISO}")
                     .WithTimeout(TimeSpan.FromSeconds(30))
                     .GetJsonAsync<Country>();
-                if (countryISO == "IN")
-                {
-                    var response2 = await Constants.BASE_URL_INDIA
-                    .AppendPathSegment($"data.json")
-                    .WithTimeout(TimeSpan.FromSeconds(30))
-                    .GetJsonAsync<Indian>();
-
-                    response.cases = response2.CasesTimeSeries.LastOrDefault()?.Totalconfirmed ?? 0;
-                    
-                }
+                
 
                 return response;
             }

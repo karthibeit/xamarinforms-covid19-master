@@ -1,9 +1,16 @@
 ﻿using LiteDB;
+using Newtonsoft.Json;
 
 namespace XFCovid19.Models
 {
     public class GlobalTotals
     {
+        [JsonConstructor]
+        public GlobalTotals(long _updated)
+        {
+            updated = _updated;
+        }
+
         [BsonId]
         public string globalKey { get; set; }
         public long updated { get; set; }

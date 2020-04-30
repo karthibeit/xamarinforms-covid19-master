@@ -1,4 +1,8 @@
 ﻿
+
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
+using Android.Util;
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -16,11 +20,12 @@ namespace XFCovid19
     public partial class MainPage : ContentPage
     {
         MainPageViewModel viewModel;
-        IFirebaseAnalytics eventTracker;
+        
         public MainPage()
         {
             InitializeComponent();
-           
+            Log.Info("Kandroid", "App started - Karthia");
+
             BindingContext = viewModel = new MainPageViewModel(new RestService());
         }
 
@@ -37,58 +42,58 @@ namespace XFCovid19
             viewModel.OnDisappearing();
         }
 
-        private bool isOpen = false;
-        private async void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
-        {
-            if (isOpen == false)
-            {
-                isOpen = true;
-                //Scale to smaller
-                await ((Frame)sender).ScaleTo(0.8, 50, Easing.Linear);
-                //Wait a moment
-                await Task.Delay(100);
-                //Scale to normal
-                await ((Frame)sender).ScaleTo(1, 50, Easing.Linear);
+        //private bool isOpen = false;
+        //private async void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
+        //{
+        //    if (isOpen == false)
+        //    {
+        //        isOpen = true;
+        //        //Scale to smaller
+        //        await ((Frame)sender).ScaleTo(0.8, 50, Easing.Linear);
+        //        //Wait a moment
+        //        await Task.Delay(100);
+        //        //Scale to normal
+        //        await ((Frame)sender).ScaleTo(1, 50, Easing.Linear);
 
-                //Show FloatMenuItem1
-                FloatMenuItem1.IsVisible = true;
-                await FloatMenuItem1.TranslateTo(0, 0, 100);
-                await FloatMenuItem1.TranslateTo(0, -20, 100);
-                await FloatMenuItem1.TranslateTo(0, 0, 200);
+        //        //Show FloatMenuItem1
+        //        FloatMenuItem1.IsVisible = true;
+        //        await FloatMenuItem1.TranslateTo(0, 0, 100);
+        //        await FloatMenuItem1.TranslateTo(0, -20, 100);
+        //        await FloatMenuItem1.TranslateTo(0, 0, 200);
 
                 
-            }
-            else
-            {
-                isOpen = false;
-                //Scale to smaller
-                await ((Frame)sender).ScaleTo(0.8, 50, Easing.Linear);
-                //Wait a moment
-                await Task.Delay(100);
-                //Scale to normal
-                await ((Frame)sender).ScaleTo(1, 50, Easing.Linear);
+        //    }
+        //    else
+        //    {
+        //        isOpen = false;
+        //        //Scale to smaller
+        //        await ((Frame)sender).ScaleTo(0.8, 50, Easing.Linear);
+        //        //Wait a moment
+        //        await Task.Delay(100);
+        //        //Scale to normal
+        //        await ((Frame)sender).ScaleTo(1, 50, Easing.Linear);
 
-                //Hide FloatMenuItem1
-                await FloatMenuItem1.TranslateTo(0, 0, 100);
-                await FloatMenuItem1.TranslateTo(0, -20, 100);
-                await FloatMenuItem1.TranslateTo(0, 0, 200);
-                FloatMenuItem1.IsVisible = false;
+        //        //Hide FloatMenuItem1
+        //        await FloatMenuItem1.TranslateTo(0, 0, 100);
+        //        await FloatMenuItem1.TranslateTo(0, -20, 100);
+        //        await FloatMenuItem1.TranslateTo(0, 0, 200);
+        //        FloatMenuItem1.IsVisible = false;
 
                
-            }
+        //    }
 
-        }
+        //}
 
-        private async void FloatMenuItem1Tap_OnTapped(object sender, EventArgs e)
-        {
-            var eventTracker = DependencyService.Get<IFirebaseAnalytics>();
-            LabelStatus.Text = "India";
-            eventTracker.SendEvent("Click1");
-            await Navigation.PushModalAsync(new IndianPage());
+        //private async void FloatMenuItem1Tap_OnTapped(object sender, EventArgs e)
+        //{
+        //    var eventTracker = DependencyService.Get<IFirebaseAnalytics>();
+        //    LabelStatus.Text = "India";
+        //    eventTracker.SendEvent("Click1");
+        //    await Navigation.PushModalAsync(new IndianPage());
 
 
 
-        }
+        //}
 
       
     }
