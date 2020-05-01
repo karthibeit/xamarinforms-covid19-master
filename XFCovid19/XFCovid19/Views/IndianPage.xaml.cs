@@ -22,16 +22,29 @@ namespace XFCovid19.Views
         {
 
             InitializeComponent();
+            
             eventTracker = DependencyService.Get<IFirebaseAnalytics>();
             BindingContext = indiaViewModel = new IndianPageViewModel(new RestService());
         }
         protected override async void OnAppearing()
         {
+            ActivityIndicator activityIndicator = new ActivityIndicator { Color = Color.Orange, IsRunning = true };
             indiaViewModel.ChangeLanguageApp();
             eventTracker.SendEvent("indiaViewModel");
             await indiaViewModel.GetTotalsByIndiaCountry("IN");
-           
+            StateSearchList.ItemsSource = indiaViewModel.StateWiseListView;
+            activityIndicator.IsRunning = false;
 
+
+        }
+        async void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        {
+            var sateWisePage = new StateWisePage(e.SelectedItem as Statewise);
+            await Navigation.PushModalAsync(sateWisePage);
+        }
+        void OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            StateSearchList.ItemsSource = indiaViewModel.StateWiseListView.Where(a => a.State.ToLower().Contains(e.NewTextValue.ToLower()));
         }
     }
 }

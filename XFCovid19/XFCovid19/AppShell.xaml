@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Shell
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:XFCovid19" xmlns:local1="clr-namespace:XFCovid19.Views"
+    x:Class="XFCovid19.AppShell"
+    Shell.NavBarIsVisible="false">
+    <TabBar>
+        <Tab Title="World" Icon="home.png">
+            <ShellContent Title="World">
+                <local:MainPage />
+            </ShellContent>
+        </Tab>
+        <Tab Title="India" Icon="india.png">
+            <ShellContent Title="India">
+                <local1:IndianPage />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Lang" Icon="india.png">
+            <ShellContent Title="Lang">
+                <local1:ChangeLanguagePage />
+            </ShellContent>
+        </Tab>
+        <!--<Tab Title="Contact" Icon="contact.png">
+            <ShellContent Title="General" ContentTemplate="{DataTemplate pages:ContactPage}"/>
+            <ShellContent Title="FAQs" ContentTemplate="{DataTemplate pages:FAQsPage}"/>
+            <ShellContent Title="Feedback" ContentTemplate="{DataTemplate pages:FeedbackPage}"/>
+        </Tab>-->
+    </TabBar>
+</Shell>

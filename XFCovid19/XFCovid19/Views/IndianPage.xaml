@@ -89,47 +89,75 @@
                     </Grid>
                 </StackLayout>
                 <StackLayout Grid.Row="1">
+                    <SearchBar Placeholder="Search items..." 
+                               CancelButtonColor="Orange"
+           PlaceholderColor="Orange"
+           TextColor="Orange"
+           HorizontalTextAlignment="Center"
+           FontSize="Medium"
+           FontAttributes="Italic"
+                               x:Name="StateSearchBar"
+                               TextChanged="OnTextChanged"/>
                     <ListView
-                  ItemsSource="{Binding StateWiseListView}"
+                  
                   Grid.Row="2"
                   HasUnevenRows="true"
-                  SeparatorVisibility="None">
+                   SelectedItem="{Binding State}"     
+                  SeparatorVisibility="None"
+                        ItemSelected="Handle_ItemSelected"
+                        x:Name="StateSearchList">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Frame BorderColor="Gray" Margin="10" 
-                                           CornerRadius="10" HasShadow="True"
-                               AbsoluteLayout.LayoutFlags="PositionProportional"
-                               AbsoluteLayout.LayoutBounds="1,1,-1,-1"
-                               >
+                                    
+                                    <Expander FlexLayout.Basis="100%" Margin="0,0,0,10">
+                                        <Expander.Header>
+                                            <StackLayout Orientation="Horizontal" Margin="0,0,0,6">
+                                                
+                                                <Label Text="{Binding State}"
+                TextColor="Black"
+                FontSize="14"/>
+                                            </StackLayout>
+                                        </Expander.Header>
+
                                         <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="20"></RowDefinition>
-                                                <RowDefinition Height="20"></RowDefinition>
-                                                <RowDefinition Height="20"></RowDefinition>
-                                            </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="14"/>
+                                                <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding State}" LineBreakMode="TailTruncation"></Label>
-                                            <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="3" Text="{Binding Statecode}"/>
-
-                                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding Deltaconfirmed}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
-                                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Deltarecovered}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
-                                            <Label Grid.Row="1" Grid.Column="2" Text="{Binding Deltadeaths}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
-
-
-                                            <Label Grid.Row="2" Grid.Column="0" Text="{Binding Confirmed}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
-                                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Recovered}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
-                                            <Label Grid.Row="2" Grid.Column="2" Text="{Binding Deaths}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
-                                            
-                                            
+                                            <BoxView
+            Grid.RowSpan="6"
+            WidthRequest="4" BackgroundColor="White"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Center"/>
+                                            <Label
+            Grid.Row="0"
+            Grid.Column="1"
+            Text="{Binding Deltaconfirmed}"/>
+                                            <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="{Binding Deltarecovered}"/>
+                                            <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="{Binding Deltadeaths}"/>
+                                            <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Text="{Binding Confirmed}"/>
+                                            <Label
+            Grid.Row="4"
+            Grid.Column="1"
+            Text="{Binding Recovered}"/>
+                                            <Label
+            Grid.Row="5"
+            Grid.Column="1"
+            Text="{Binding Deaths}"/>
                                         </Grid>
-                                    </Frame>
+
+                                    </Expander>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>

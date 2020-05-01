@@ -25,8 +25,8 @@ namespace XFCovid19
             AppCultureInfo = Preferences.Get("appLanguage", "ta-IN");
             AppResources.Culture = new CultureInfo(AppCultureInfo);
             CrossMultilingual.Current.CurrentCultureInfo = new CultureInfo(AppCultureInfo);
-           
-            MainPage = new MainPage();
+            MainPage = new AppShell();
+            //MainPage = new MainPage();
         }
 
         protected override void OnStart()
