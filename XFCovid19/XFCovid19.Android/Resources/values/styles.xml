@@ -31,7 +31,8 @@
     <item name="colorAccent">#151515</item>
   </style>
   <style name="Theme.Splash" parent="android:Theme">
-    <item name="android:windowBackground">@drawable/splash</item>
+    <item name="android:windowBackground">@drawable/image1</item>
     <item name="android:windowNoTitle">true</item>
+    <item name="android:colorBackground">#242525</item>
   </style>
 </resources>

@@ -13,25 +13,33 @@
              mc:Ignorable="d"
              >
     <ContentPage.Content>
+            
         <ScrollView>
+            
             <Grid>
                 <Grid.RowDefinitions>
+                   
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <StackLayout>
-                    <Grid Grid.Row="0" ColumnSpacing="0">
-                        <pancake:PancakeView
+                
+                <StackLayout Margin="15">
+
+                    <Frame BackgroundColor="blue" Padding="5" HorizontalOptions="StartAndExpand" CornerRadius="5" BorderColor="DarkBlue">
+                        <Label WidthRequest="40" TextColor="White" FontAttributes="bold" Text="India" HorizontalTextAlignment="Center"></Label>
+                    </Frame>
+                    <Frame Padding="10" BackgroundColor="#FFFFFF" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                        <Grid Grid.Row="0" ColumnSpacing="0">
+                            <pancake:PancakeView BackgroundColor="{DynamicResource SkeletonLabelActiveBackground}"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Padding="0"
+                    Padding="0,8,0,8"
+                    Margin="0,0,10,0" 
                     Style="{DynamicResource FrameTotal}">
-                            <StackLayout
-                        Padding="8,15"
-                        HorizontalOptions="CenterAndExpand"
+                                <StackLayout HorizontalOptions="CenterAndExpand"
                         VerticalOptions="Center">
-                                <Label Style="{DynamicResource fontGilroyMedium12}" Text="{Binding ConfirmedHeader}"/>
-                                <Label
+                                    <Label Style="{DynamicResource fontGilroyMedium12}" Text="{Binding ConfirmedHeader}"/>
+                                    <Label
                             skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}"
                             skeleton:Skeleton.BackgroundColor="{DynamicResource SkeletonLabelBackground}"
                             
@@ -39,19 +47,22 @@
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource lbTotalCasosConfirmados}"
                             Text="{Binding CountryConfirmed}"/>
-                            </StackLayout>
-                        </pancake:PancakeView>
-                        <pancake:PancakeView
+                                </StackLayout>
+                            </pancake:PancakeView>
+                            <pancake:PancakeView
                     Grid.Row="0"
                     Grid.Column="1"
-                    Padding="0"
+                    Padding="0,8,0,8"
+                                Margin="0,0,10,0" 
+                                BackgroundColor="{DynamicResource SkeletonLabelRecoverBackground}"
+
                     Style="{DynamicResource FrameTotal}">
-                            <StackLayout
-                        Padding="8,15"
+                                <StackLayout
+                       
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="Center">
-                                <Label Style="{DynamicResource fontGilroyMedium12}" Text="{Binding RecoveredHeader}"/>
-                                <Label
+                                    <Label Style="{DynamicResource fontGilroyMedium12}" Text="{Binding RecoveredHeader}"/>
+                                    <Label
                             skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}"
                             skeleton:Skeleton.BackgroundColor="{DynamicResource SkeletonLabelBackground}"
                             Text="{Binding CountryRecovered}"
@@ -59,19 +70,22 @@
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource lbTotalCasosConfirmados}"
                             />
-                            </StackLayout>
-                        </pancake:PancakeView>
-                        <pancake:PancakeView
+
+                                </StackLayout>
+                            </pancake:PancakeView>
+                            <pancake:PancakeView
                     Grid.Row="0"
                     Grid.Column="2"
-                    Padding="0"
+                    Padding="0,8,0,8"
+                               
+                                BackgroundColor="{DynamicResource SkeletonLabelDeathBackground}"
                     Style="{DynamicResource FrameTotal}">
-                            <StackLayout
-                        Padding="8,15"
+                                <StackLayout
+                        
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="Center">
-                                <Label Style="{DynamicResource fontGilroyMedium12}" Text="{Binding DeathsHeader}"/>
-                                <Label
+                                    <Label Style="{DynamicResource fontGilroyMedium12}" Text="{Binding DeathsHeader}"/>
+                                    <Label
                             skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}"
                             skeleton:Skeleton.BackgroundColor="{DynamicResource SkeletonLabelBackground}"
                             Text="{Binding CountryDeaths}"
@@ -79,91 +93,141 @@
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource lbTotalCasosConfirmados}"
                             />
-                            </StackLayout>
-                        </pancake:PancakeView>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                    </Grid>
+                                </StackLayout>
+                            </pancake:PancakeView>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </Frame>
                 </StackLayout>
-                <StackLayout Grid.Row="1">
-                    <SearchBar Placeholder="Search items..." 
-                               CancelButtonColor="Orange"
-           PlaceholderColor="Orange"
-           TextColor="Orange"
+                
+                <StackLayout Grid.Row="1" Margin="0,0,0,0">
+                    
+                        <SearchBar BackgroundColor="#EEEEEE" Placeholder="Search items..." 
+                               CancelButtonColor="#333333" PlaceholderColor="#333333"
+           TextColor="#333333"
            HorizontalTextAlignment="Center"
-           FontSize="Medium"
+           FontSize="18" 
            FontAttributes="Italic"
                                x:Name="StateSearchBar"
                                TextChanged="OnTextChanged"/>
-                    <ListView
-                  
-                  Grid.Row="2"
-                  HasUnevenRows="true"
-                   SelectedItem="{Binding State}"     
-                  SeparatorVisibility="None"
+                
+               
+                        <ListView
+                        Grid.Row="2"
+                        HasUnevenRows="True"
+                        SelectedItem="{Binding State}"     
+                        VerticalOptions="CenterAndExpand"
+                       SeparatorVisibility="None"
                         ItemSelected="Handle_ItemSelected"
                         x:Name="StateSearchList">
+                        
                         <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    
-                                    <Expander FlexLayout.Basis="100%" Margin="0,0,0,10">
-                                        <Expander.Header>
-                                            <StackLayout Orientation="Horizontal" Margin="0,0,0,6">
-                                                
-                                                <Label Text="{Binding State}"
-                TextColor="Black"
-                FontSize="14"/>
-                                            </StackLayout>
-                                        </Expander.Header>
+                                <DataTemplate >
+                                    <ViewCell>
 
-                                        <Grid>
+                                        <Expander FlexLayout.Basis="100%"  Margin="10">
+                                            <Expander.Header>
+                                            <Frame IsClippedToBounds="True"
+                                               HasShadow="False"
+                                               Padding="0" Margin="0,0,0,0" 
+                                               BackgroundColor="#FFFFFF" >                
+                                                <Frame.OutlineColor>
+                                                    <OnPlatform x:TypeArguments="Color"
+                        Android="#DDDDDD"
+                        iOS="#DDDDDD"/>
+                                                </Frame.OutlineColor>
+                                               
+                                                <StackLayout Orientation="Horizontal">
+                                                    <BoxView Color="#10B2F0" WidthRequest="6"/>
+                                                    <Grid VerticalOptions="CenterAndExpand"
+                     Padding="0"
+                     HorizontalOptions="FillAndExpand"
+                     BackgroundColor="Transparent">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label FontAttributes="Bold"
+                       Grid.Row="0"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center"
+                       FontSize="21"
+                       Text="{Binding State}">
+                                                            <Label.LineBreakMode>
+                                                                <OnPlatform x:TypeArguments="LineBreakMode"
+                              Android="NoWrap" 
+                              iOS="TailTruncation"/>
+                                                            </Label.LineBreakMode>
+                                                        </Label>
+                                                        <BoxView Grid.Row="1" Color="#DDDDDD"
+                        HorizontalOptions="FillAndExpand"
+                        HeightRequest="1"/>
+                                                        <Grid Grid.Row="2"
+                       BackgroundColor="Transparent"
+                       Padding="4">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="*" />
+                                                                
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Grid.Row="0"
+                              Grid.Column="0"
+                              Text="{Binding Confirmed}" TextColor="#10B2F0" FontSize="19"/>
+                                                            <Label Grid.Row="0"
+                              Grid.Column="1"
+                              Text="{Binding Recovered}" TextColor="#53BE54" FontSize="19"/>
+                                                            <Label Grid.Row="0"
+                              Grid.Column="2"
+                              Text="{Binding Deaths}" TextColor="#FO4728" FontSize="19"/>
+                                                        </Grid>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Frame>
+                                        </Expander.Header>
+                                        <Frame BorderColor="#DDDDDD" HasShadow="False">
+                                            <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="14"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-
-                                            <BoxView
-            Grid.RowSpan="6"
-            WidthRequest="4" BackgroundColor="White"
-                    VerticalOptions="Fill"
-                    HorizontalOptions="Center"/>
-                                            <Label
-            Grid.Row="0"
-            Grid.Column="1"
-            Text="{Binding Deltaconfirmed}"/>
-                                            <Label
+                                            <Label Grid.Row="0" Grid.ColumnSpan="3"             
+            Text="Today" TextColor="#333333" FontSize="19" FontFamily="{StaticResource RobotoBold}"/>
+                                           
+                                            
+                                                <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Text="{Binding Deltaconfirmed}" TextColor="#10B2F0" FontSize="18"/>
+                                                <Label
             Grid.Row="1"
             Grid.Column="1"
-            Text="{Binding Deltarecovered}"/>
-                                            <Label
-            Grid.Row="2"
-            Grid.Column="1"
-            Text="{Binding Deltadeaths}"/>
-                                            <Label
-            Grid.Row="3"
-            Grid.Column="1"
-            Text="{Binding Confirmed}"/>
-                                            <Label
-            Grid.Row="4"
-            Grid.Column="1"
-            Text="{Binding Recovered}"/>
-                                            <Label
-            Grid.Row="5"
-            Grid.Column="1"
-            Text="{Binding Deaths}"/>
+            Text="{Binding Deltarecovered}" TextColor="#53BE54" FontSize="18"/>
+                                                <Label
+            Grid.Row="1"
+            Grid.Column="2"
+            Text="{Binding Deltadeaths}" TextColor="#FO4728" FontSize="18"/>
+                                           
                                         </Grid>
-
+                                        </Frame>
                                     </Expander>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                   
                 </StackLayout>
-
+               
             </Grid>
         </ScrollView>
     </ContentPage.Content>

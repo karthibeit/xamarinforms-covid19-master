@@ -16,11 +16,7 @@
                 <local1:IndianPage />
             </ShellContent>
         </Tab>
-        <Tab Title="Lang" Icon="india.png">
-            <ShellContent Title="Lang">
-                <local1:ChangeLanguagePage />
-            </ShellContent>
-        </Tab>
+       
         <!--<Tab Title="Contact" Icon="contact.png">
             <ShellContent Title="General" ContentTemplate="{DataTemplate pages:ContactPage}"/>
             <ShellContent Title="FAQs" ContentTemplate="{DataTemplate pages:FAQsPage}"/>

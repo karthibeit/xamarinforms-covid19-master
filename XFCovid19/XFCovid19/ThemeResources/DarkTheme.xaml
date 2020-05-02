@@ -87,7 +87,7 @@
     </Style>
     <Style x:Key="FrameTotal" TargetType="pancake:PancakeView">
         <Setter Property="BackgroundColor" Value="#3B3B3B" />
-        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="CornerRadius" Value="0" />
         <Setter Property="Elevation" Value="2" />
         <Setter Property="HasShadow" Value="False" />
         <Setter Property="Padding" Value="0" />
@@ -96,7 +96,7 @@
         <Setter Property="Aspect" Value="AspectFill" />
         <Setter Property="Source" Value="doctor_dark.png" />
     </Style>
-    <Color x:Key="MainPageBackgroundColor">#2B2B2B</Color>
+    <Color x:Key="MainPageBackgroundColor">#252525</Color>
     <Color x:Key="SkeletonLabelBackground">#2B2B2B</Color>
     <Color x:Key="SkeletonStackBackground">#3B3B3B</Color>
     <Color x:Key="SearchPageBackgroundColor">#2B2B2B</Color>

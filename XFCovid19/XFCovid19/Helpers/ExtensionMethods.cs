@@ -6,39 +6,41 @@ namespace XFCovid19.Helpers
     {
         public static string TransformNumberToString(this int number)
         {
-            switch (number.ToString().Length)
-            {
-                case 1:
-                case 2:
-                case 3:
-                    return number.ToString();
-                case 4:
-                    return $"{number.ToString().Insert(1, ",")}";
-                case 5:
-                    return $"{number.ToString().Insert(2, ",")}";
-                case 6:
-                    return $"{number.ToString().Insert(3, ",")}";
-                default:
-                    return $"{number.ToString().Insert(1, ",")}";
-            }
+            return number.ToString("N0");
+            //switch (number.ToString().Length)
+            //{
+            //    case 1:
+            //    case 2:
+            //    case 3:
+            //        return number.ToString();
+            //    case 4:
+            //        return $"{number.ToString().Insert(1, ",")}";
+            //    case 5:
+            //        return $"{number.ToString().Insert(2, ",")}";
+            //    case 6:
+            //        return $"{number.ToString().Insert(3, ",")}";
+            //    default:
+            //        return $"{number.ToString().Insert(1, ",")}";
+            //}
         }
         public static string TransformLongToString(this long number)
         {
-            switch (number.ToString().Length)
-            {
-                case 1:
-                case 2:
-                case 3:
-                    return number.ToString();
-                case 4:
-                    return $"{number.ToString().Insert(1, ",")}";
-                case 5:
-                    return $"{number.ToString().Insert(2, ",")}";
-                case 6:
-                    return $"{number.ToString().Insert(3, ",")}";
-                default:
-                    return $"{number.ToString().Insert(1, ",")}";
-            }
+            return number.ToString("N0");
+            //switch (number.ToString().Length)
+            //{
+            //    case 1:
+            //    case 2:
+            //    case 3:
+            //        return number.ToString();
+            //    case 4:
+            //        return $"{number.ToString().Insert(1, ",")}";
+            //    case 5:
+            //        return $"{number.ToString().Insert(2, ",")}";
+            //    case 6:
+            //        return $"{number.ToString().Insert(3, ",")}";
+            //    default:
+            //        return $"{number.ToString().Insert(1, ",")}";
+            //}
         }
 
         public static string FormatDateTime(this DateTime dateTime, string cultureInfo)

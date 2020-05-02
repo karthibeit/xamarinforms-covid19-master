@@ -499,7 +499,7 @@
     <value>Madagascar</value>
   </data>
   <data name="MainHeader" xml:space="preserve">
-    <value>Covid-19 Live Updates</value>
+    <value>&#10;Covid-19 Live Updates</value>
   </data>
   <data name="MainHeaderSubtitle" xml:space="preserve">
     <value>Last updated:</value>

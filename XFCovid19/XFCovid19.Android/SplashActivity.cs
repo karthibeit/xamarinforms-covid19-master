@@ -11,6 +11,7 @@ namespace XFCovid19.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.splashLayout);
             StartActivity(typeof(MainActivity));
             Finish();
         }

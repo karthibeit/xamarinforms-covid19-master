@@ -1,0 +1,13 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+  <item>
+    <shape android:shape="rectangle" >
+      <solid android:color="#242525" />
+    </shape>
+  </item>
+  <item>
+    <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+        android:src="@drawable/splash"
+        android:background="#242525"
+        android:gravity="center"/>
+  </item>
+</layer-list>

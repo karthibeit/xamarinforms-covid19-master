@@ -11,7 +11,7 @@
     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:theme="clr-namespace:XFCovid19.ThemeResources"
     mc:Ignorable="d">
-
+  
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation
             DurationIn="400"
