@@ -2,6 +2,7 @@
 <ContentPage 
     x:Class="XFCovid19.Views.IndianPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:fonts="clr-namespace:XFCovid19.Fonts"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
@@ -46,7 +47,8 @@
                             skeleton:Skeleton.IsParent="False"
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource lbTotalCasosConfirmados}"
-                            Text="{Binding CountryConfirmed}"/>
+                            Text="{Binding CountryConfirmed}" TextColor="White"/>
+                                    
                                 </StackLayout>
                             </pancake:PancakeView>
                             <pancake:PancakeView
@@ -66,6 +68,7 @@
                             skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}"
                             skeleton:Skeleton.BackgroundColor="{DynamicResource SkeletonLabelBackground}"
                             Text="{Binding CountryRecovered}"
+                                        TextColor="White"
                             skeleton:Skeleton.IsParent="False"
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource lbTotalCasosConfirmados}"
@@ -89,6 +92,7 @@
                             skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}"
                             skeleton:Skeleton.BackgroundColor="{DynamicResource SkeletonLabelBackground}"
                             Text="{Binding CountryDeaths}"
+                                        TextColor="white"
                             skeleton:Skeleton.IsParent="False"
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource lbTotalCasosConfirmados}"
@@ -144,48 +148,65 @@
                                                 <StackLayout Orientation="Horizontal">
                                                     <BoxView Color="#10B2F0" WidthRequest="6"/>
                                                     <Grid VerticalOptions="CenterAndExpand"
-                     Padding="0"
+                     Padding="0,10,0,10"
                      HorizontalOptions="FillAndExpand"
                      BackgroundColor="Transparent">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="*"/>
-                                                            <RowDefinition Height="Auto"/>
+                                                            
                                                             <RowDefinition Height="*"/>
                                                         </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
                                                         <Label FontAttributes="Bold"
                        Grid.Row="0"
+                        Grid.Column="0"                                                               
                        HorizontalTextAlignment="Start"
                        VerticalTextAlignment="Center"
                        FontSize="21"
                        Text="{Binding State}">
-                                                            <Label.LineBreakMode>
-                                                                <OnPlatform x:TypeArguments="LineBreakMode"
-                              Android="NoWrap" 
-                              iOS="TailTruncation"/>
-                                                            </Label.LineBreakMode>
+                                                            
                                                         </Label>
-                                                        <BoxView Grid.Row="1" Color="#DDDDDD"
-                        HorizontalOptions="FillAndExpand"
-                        HeightRequest="1"/>
-                                                        <Grid Grid.Row="2"
-                       BackgroundColor="Transparent"
-                       Padding="4">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="*" />
-                                                                
-                                                            </Grid.ColumnDefinitions>
-                                                            <Label Grid.Row="0"
+                                                        <ImageButton Grid.Row="0" Grid.Column="1"
+                                                                    
+                            Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
+                            Glyph={x:Static fonts:FontIcons.CalendarMonth},Color=#666666, Size=20}"
+                            BackgroundColor="Transparent"
+                                         
+                                         HorizontalOptions="End"/>
+                                                        <Label FontAttributes="Italic"
+                       Grid.Row="0"
+                        Grid.Column="2" 
+                        Padding="0,0,8,0"                                                               
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center"
+                       FontSize="17"
+                       Text="{Binding Lastupdatedtime}">
+
+                                                        </Label>
+                                                        
+                                                            
+                                                            <Label Grid.Row="1"
                               Grid.Column="0"
                               Text="{Binding Confirmed}" TextColor="#10B2F0" FontSize="19"/>
-                                                            <Label Grid.Row="0"
+                                                            <Label Grid.Row="1"
                               Grid.Column="1"
                               Text="{Binding Recovered}" TextColor="#53BE54" FontSize="19"/>
-                                                            <Label Grid.Row="0"
+                                                            <Label Grid.Row="1"
                               Grid.Column="2"
-                              Text="{Binding Deaths}" TextColor="#FO4728" FontSize="19"/>
-                                                        </Grid>
+                             
+                              Text="{Binding Deaths}" TextColor="#FO4728" FontSize="19" HorizontalTextAlignment="Center"/>
+                                                        
+                                                        <ImageButton Grid.Row="1" Grid.Column="2"
+                                                                    
+                            Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
+                            Glyph={x:Static fonts:FontIcons.MenuDown},Color=#666666, Size=30}"
+                            BackgroundColor="Transparent"
+                                         
+                                         HorizontalOptions="End"/>
                                                     </Grid>
                                                 </StackLayout>
                                             </Frame>
@@ -201,24 +222,50 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Row="0" Grid.ColumnSpan="3"             
+                                                
+                                            <Label Grid.Row="0" Grid.Column="0"             
             Text="Today" TextColor="#333333" FontSize="19" FontFamily="{StaticResource RobotoBold}"/>
-                                           
-                                            
-                                                <Label
-            Grid.Row="1"
-            Grid.Column="0"
-            Text="{Binding Deltaconfirmed}" TextColor="#10B2F0" FontSize="18"/>
-                                                <Label
-            Grid.Row="1"
-            Grid.Column="1"
-            Text="{Binding Deltarecovered}" TextColor="#53BE54" FontSize="18"/>
-                                                <Label
-            Grid.Row="1"
-            Grid.Column="2"
-            Text="{Binding Deltadeaths}" TextColor="#FO4728" FontSize="18"/>
-                                           
-                                        </Grid>
+                                                <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="Start">
+                                                    <ImageButton 
+                            Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
+                            Glyph={x:Static fonts:FontIcons.AlertOutline},Color=#FO4728, Size=20}"
+                            BackgroundColor="Transparent"
+                                         />
+                                                    <Label             
+            Text="{Binding Statenotes}" TextColor="#FO4728" FontSize="14" FontFamily="{StaticResource RobotoRegular}"
+                                                       HorizontalOptions="End"/>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Start">
+                                                    <ImageButton 
+                            Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
+                            Glyph={x:Static fonts:FontIcons.ArrowUp},Color=#FO4728, Size=20}"
+                            BackgroundColor="Transparent" VerticalOptions="Center"
+                                         />
+                                                    <Label
+                                                
+            Text="{Binding Deltaconfirmed}" TextColor="#10B2F0" FontSize="18" VerticalOptions="Center"/>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                    <ImageButton
+                            Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
+                            Glyph={x:Static fonts:FontIcons.ArrowDown},Color=#53BE54, Size=20}"
+                            BackgroundColor="Transparent" VerticalOptions="Center"
+                                        />
+                                                    <Label
+          
+            Text="{Binding Deltarecovered}" TextColor="#53BE54" FontSize="18" VerticalOptions="Center"/>
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="1" Grid.Column="2" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                    <ImageButton 
+                            Source="{FontImage FontFamily={StaticResource MaterialFontFamily},
+                            Glyph={x:Static fonts:FontIcons.ArrowUp},Color=#FO4728, Size=20}"
+                            BackgroundColor="Transparent" VerticalOptions="Center"
+                                         />
+                                                    <Label Text="{Binding Deltadeaths}" TextColor="#FO4728" FontSize="18" VerticalOptions="Center"/>
+
+                           </StackLayout>
+                                            </Grid>
                                         </Frame>
                                     </Expander>
                                     </ViewCell>

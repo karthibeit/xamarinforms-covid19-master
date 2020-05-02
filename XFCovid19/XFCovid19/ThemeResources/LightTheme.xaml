@@ -41,7 +41,7 @@
     <Style x:Key="lbHeaderAndroid" TargetType="Label">
         <Setter Property="FontFamily" Value="{StaticResource RobotoBold}" />
         <Setter Property="TextColor" Value="#d4472f" />
-        <Setter Property="FontSize" Value="29" />
+        <Setter Property="FontSize" Value="33" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
     <Style x:Key="lbHeaderiOS" TargetType="Label">

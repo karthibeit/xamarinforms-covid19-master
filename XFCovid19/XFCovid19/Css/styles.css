@@ -1,0 +1,11 @@
+﻿.detailPageTitle {
+    font-style: oblique;
+    font-size: medium;
+    text-align: center;
+}
+
+.detailPageSubtitle {
+    text-align: center;
+    font-style: italic;
+    color: yellow;
+}

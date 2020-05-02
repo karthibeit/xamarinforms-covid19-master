@@ -13,7 +13,9 @@
     x:DataType="viewmodels:MainPageViewModel"
     BackgroundColor="{DynamicResource MainPageBackgroundColor}"
     mc:Ignorable="d">
-    
+    <ContentPage.Resources>
+        <StyleSheet Source="/Css/styles.css" />
+    </ContentPage.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -53,8 +55,9 @@
                             Style="{OnPlatform Android={StaticResource lbHeaderAndroid},
                                                iOS={StaticResource lbHeaderiOS}}"
                             Text="{Binding Title}" 
-                            TextColor="White"
+                            
                                 FontSize="20"
+                                StyleClass="detailPageSubtitle"
                             />
 
                             <Label
@@ -141,7 +144,7 @@
                     
                     Style="{DynamicResource lbLastUpdateGlobal}"
                     Text="{Binding GlobalUpdateHeader}" />
-                            <ImageButton Grid.Row="0"
+                            <!--<ImageButton Grid.Row="0"
                                        BackgroundColor="Transparent"
                                          HorizontalOptions="End"
                     Grid.Column="2"
@@ -150,7 +153,17 @@
                                 <ImageButton.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding RefreshGlobalCommand}" NumberOfTapsRequired="1" />
                                 </ImageButton.GestureRecognizers>
-                            </ImageButton>
+                            </ImageButton>-->
+                            <Label
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalOptions="EndAndExpand"
+                    Style="{StaticResource lbRefresh}"
+                    Text="{Binding RefreshHeader}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding RefreshGlobalCommand}" NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
 
                             
                             <pancake:PancakeView BackgroundColor="{DynamicResource SkeletonLabelActiveBackground}"

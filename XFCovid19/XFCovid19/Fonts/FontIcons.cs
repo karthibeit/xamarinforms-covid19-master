@@ -2,8 +2,8 @@
 {
     public static class FontIcons
     {
-        public const string ArrowDown = "\uE800";
-        public const string ArrowUp = "\uE801";
+        //public const string ArrowDown = "\uE800";
+        //public const string ArrowUp = "\uE801";
         public const string Close = "\uE802";
         public const string Search = "\uE803";
         public const string VectorSquare = "\U000f0001";
@@ -18,7 +18,10 @@
         public const string Virus = "\U000f13b6";
         public const string VirusOutline = "\U000f13b7";
         public const string Rotate3dVariant = "\U000f0464";
-
+        public const string ArrowUp = "\U000f005d";
+        public const string ArrowDown = "\U000f0045";
+        public const string MenuDown = "\U000f035d";
+        public const string AlertOutline = "\U000f002a";
 
     }
 }

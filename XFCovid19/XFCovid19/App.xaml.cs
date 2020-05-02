@@ -22,7 +22,7 @@ namespace XFCovid19
         {
             InitializeComponent();
 
-            AppCultureInfo = Preferences.Get("appLanguage", "ta-IN");
+            AppCultureInfo = Preferences.Get("appLanguage", "en");
             AppResources.Culture = new CultureInfo(AppCultureInfo);
             CrossMultilingual.Current.CurrentCultureInfo = new CultureInfo(AppCultureInfo);
             MainPage = new AppShell();
