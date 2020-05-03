@@ -2,8 +2,12 @@
 <Shell
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:XFCovid19" xmlns:local1="clr-namespace:XFCovid19.Views"
+    xmlns:local="clr-namespace:XFCovid19" 
+    xmlns:fonts="clr-namespace:XFCovid19.Fonts"
+    xmlns:localviews="clr-namespace:XFCovid19.Views"
     x:Class="XFCovid19.AppShell"
+    Shell.BackgroundColor="GhostWhite"
+    
     Shell.NavBarIsVisible="false">
     <TabBar>
         <Tab Title="World" Icon="home.png">
@@ -13,7 +17,15 @@
         </Tab>
         <Tab Title="India" Icon="india.png">
             <ShellContent Title="India">
-                <local1:IndianPage />
+                <localviews:IndianPage />
+            </ShellContent>
+        </Tab>
+        <Tab Title="About">
+            <Tab.Icon>
+                <FontImageSource FontFamily="{StaticResource MaterialFontFamily}" Glyph="{x:Static fonts:FontIcons.AccountVoice}"/>
+            </Tab.Icon>
+            <ShellContent Title="About">
+                <localviews:AboutPage />
             </ShellContent>
         </Tab>
        

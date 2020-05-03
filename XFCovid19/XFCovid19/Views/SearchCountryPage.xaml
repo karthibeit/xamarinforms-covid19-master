@@ -70,7 +70,7 @@
                         Margin="0,0,30,0"
                         FontFamily="{StaticResource Fontello}"
                         FontSize="24"
-                        Text="{x:Static fonticons:FontIcons.Search}"
+                        Text="{x:Static fonticons:FontIcons.SearchWeb}"
                         TextColor="{DynamicResource SearchPageLabelTextColor}"
                         VerticalOptions="Center">
                         <Label.GestureRecognizers>
@@ -106,8 +106,8 @@
                         WidthRequest="36">
                         <ImageButton.Source>
                             <FontImageSource
-                                FontFamily="{StaticResource Fontello}"
-                                Glyph="{x:Static fonticons:FontIcons.Close}"
+                                FontFamily="{StaticResource MaterialFontFamily}"
+                                Glyph="{x:Static fonticons:FontIcons.CloseCircleOutline}"
                                 Color="White" />
                         </ImageButton.Source>
                     </ImageButton>

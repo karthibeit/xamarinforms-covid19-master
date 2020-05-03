@@ -34,6 +34,7 @@ namespace XFCovid19.Views
             await indiaViewModel.GetTotalsByIndiaCountry("IN");
             StateSearchList.ItemsSource = indiaViewModel.StateWiseListView;
             activityIndicator.IsRunning = false;
+            StateSearchList.IsRefreshing = false;
 
 
         }

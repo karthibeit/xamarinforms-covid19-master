@@ -165,7 +165,7 @@ namespace XFCovid19.ViewModels
 
         private void ExecuteSearchCountryCommand()
         {
-            var cultureInfoPtBR = App.AppCultureInfo.Equals("ta-IN");
+            var cultureInfoPtBR = App.AppCultureInfo.Equals("en");
             IEnumerable<Country> countries;
 
             if (string.IsNullOrEmpty(SearchText))

@@ -5,7 +5,12 @@
 }
 
 .detailPageSubtitle {
-    text-align: center;
-    font-style: italic;
-    color: yellow;
+    text-align: left;
+    
+    color: white;
+    
+    
+}
+.indiapageexpanderframe {
+   background-color: red;
 }

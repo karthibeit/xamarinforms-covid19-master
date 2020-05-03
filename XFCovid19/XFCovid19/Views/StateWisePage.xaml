@@ -13,10 +13,23 @@
     BackgroundColor="{DynamicResource MainPageBackgroundColor}"
     mc:Ignorable="d">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding Statewise.Active}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Frame BorderColor="Gray"
+                   HasShadow="True"
+       CornerRadius="5"
+       Padding="8"
+       >
+                <StackLayout>
+                    <Label Text="{Binding Statewise.State}"
+           FontSize="Medium"
+           FontAttributes="Bold"
+           TextColor="#FF0FF0"/>
+                    <BoxView Color="Gray"
+             HeightRequest="2"
+             HorizontalOptions="Fill" />
+                    <Label Text="Coming soon : State wise................!"/>
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

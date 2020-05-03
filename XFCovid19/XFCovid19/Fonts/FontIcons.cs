@@ -22,6 +22,11 @@
         public const string ArrowDown = "\U000f0045";
         public const string MenuDown = "\U000f035d";
         public const string AlertOutline = "\U000f002a";
+        public const string MenuUp = "\U000f0360";
+        public const string AccountVoice = "\U000f05cb";
+        public const string SearchWeb = "\U000f070f";
+        public const string CloseCircleOutline = "\U000f015a";
+        public const string Account = "\U000f0004";
 
     }
 }
